@@ -1,0 +1,15 @@
+# Runtime parameters — loaded by AgentRegistry, passed as Graph(config=...).
+# Separate from config/agent.yaml (the static manifest).
+
+max_retry: 3
+timeout_s: 30
+# Overall confidence gate for the extraction. Forwarded by the outer
+# GraphNode into the inner DomainWorkflowGraph and read by
+# ValidationCheckNode (SR Medium 2026-07 — config propagation).
+min_confidence_threshold: 0.80
+llm:
+  system_prompt_template: "prompts/financial_document_extraction.j2"
+  temperature: 0.0
+  max_tokens: 4000
+security:
+  s3_gate_enabled: true
